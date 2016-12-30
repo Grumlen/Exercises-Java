@@ -1,15 +1,18 @@
 function deepEqual(X,Y) {
+  if (X===Y) return true;
   if (typeof X != typeof Y) return false;
   if ((typeof X === "object" || typeof Y === "object") && (X != null || Y != null)) {
-    if (X.length!=Y.length) return false;
+    var counterX=0, counterY=0;
     for (var event in X) {
-      return ((event in Y) && deepEqual(X[event],Y[event]));
+      if (!((event in Y) && deepEqual(X[event],Y[event]))) return false;
+      counterX++;
     }
     for (var event in Y) {
-      return ((event in X) && deepEqual(X[event],Y[event]));
+      if (!((event in X) && deepEqual(X[event],Y[event]))) return false;
+      counterY++;
     }
   }
-  else return (X===Y);
+  return (counterX==counterY);
 }
 
 var obj = {here: {is: "an"}, object: 2};
@@ -21,4 +24,3 @@ console.log(deepEqual(obj, {here: {is: "an"}, object: 2}));
 // → true
 console.log(deepEqual(obj, {here: {is: "an",hi:{bye:''}}, object: 2}));
 // → false
-// Attempted to fix the solution by checking more deeply, but it is still returning a true value and I do not know why.
