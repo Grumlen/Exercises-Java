@@ -1,12 +1,13 @@
-function range(start,end) {
+function range(start,end,step) {
   var array = [];
-  if (start<=end) {
-    for (i=start;i<=end;i++) {
+  if (step==undefined) step=1;
+  if (step>0) {
+    for (i=start;i<=end;i+=step) {
       array.push(i);
     }
   }
   else {
-    for (i=start;i>=end;i--) {
+    for (i=start;i>=end;i+=step) {
       array.push(i);
     }
   }
