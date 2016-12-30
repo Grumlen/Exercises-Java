@@ -21,3 +21,4 @@ console.log(deepEqual(obj, {here: {is: "an"}, object: 2}));
 // → true
 console.log(deepEqual(obj, {here: {is: "an",hi:{bye:''}}, object: 2}));
 // → false
+// Attempted to fix the solution by checking more deeply, but it is still returning a true value and I do not know why.
