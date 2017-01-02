@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style>
+      /* Defines a cleaner look for tables */
+      table  { border-collapse: collapse; }
+      td, th { border: 1px solid black; padding: 3px 8px; }
+      th     { text-align: left; }
+    </style>
+    <script>
+    var MOUNTAINS = [
+      {name: "Kilimanjaro", height: 5895, country: "Tanzania"},
+      {name: "Everest", height: 8848, country: "Nepal"},
+      {name: "Mount Fuji", height: 3776, country: "Japan"},
+      {name: "Mont Blanc", height: 4808, country: "Italy/France"},
+      {name: "Vaalserberg", height: 323, country: "Netherlands"},
+      {name: "Denali", height: 6168, country: "United States"},
+      {name: "Popocatepetl", height: 5465, country: "Mexico"}
+    ];
+    function buildTable(data) {
+      var table = document.createElement("table");
+      var headerRow = document.createElement("tr");
+      table.appendChild(headerRow);
+      var headers = Object.keys(data[0]);
+      for (i=0;i<headers.length;i++) {
+        var headerCell = document.createElement("th");
+        headerCell.textContent = headers[i];
+        headerRow.appendChild(headerCell);
+      }
+      data.forEach( function(mountain) {
+        var tableRow = document.createElement("tr");
+        for (var fact in mountain) {
+          var tableCell = document.createElement("td");
+          tableCell.textContent = mountain[fact];
+  //      Getting an unexpected identifier error, not sure why.
+  //      if (typeOf mountain[fact] === "number") {
+  //        tableCell.style.textAlign = "right";
+  //      }
+          tableRow.appendChild(tableCell);
+        }
+        table.appendChild(tableRow);
+      });
+      return table;
+    }
+    console.log(MOUNTAINS);
+    document.body.appendChild(buildTable(MOUNTAINS));
+    </script>
+  </head>
+  <body>
+
+  </body>
+</html>
