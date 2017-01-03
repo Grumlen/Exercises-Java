@@ -6,10 +6,11 @@ function reverseArray(array) {
   return reverse;
 }
 function reverseArrayInPlace(array) {
-  for (i=array.length-2;i>=0;i--) {
-    array = array.slice(0,i).concat(array.slice(i+1)).concat(array[i]);
+  for (var i=0;i<=Math.floor(array.length/2);i++) {
+    var temp = array[i];
+    array[i]=array[array.length-i-1];
+    array[array.length-i-1]=temp;
   }
-  arrayValue=array;
 }
 console.log(reverseArray(["A", "B", "C"]));
 // → ["C", "B", "A"];
