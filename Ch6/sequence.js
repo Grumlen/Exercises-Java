@@ -1,18 +1,17 @@
 // Your code here.
-function logFive(array) {
-  for (i=0;i<Math.min(5,array.length);i++) {
-    console.log(array[i]);
+function logFive(object) {
+  for (i=0;i<Math.min(5,object.array.length);i++) {
+    console.log(object.array[i]);
   }
 }
 function RangeSeq(from,to) {
-  var array = [];
+  this.array = [];
   for (i=from;i<=to;i++) {
-    array.push(i);
+    this.array.push(i);
   }
-  return array;
 }
 function ArraySeq(array) {
-  return array;
+  this.array = array;
 }
 logFive(new ArraySeq([1, 2]));
 // → 1
