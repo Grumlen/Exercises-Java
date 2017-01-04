@@ -8,11 +8,11 @@ var box = {
     return this._content;
   }
 };
-function withBoxUnlocked(body) {
+function withBoxUnlocked(plunder) {
   // Your code here.
-  if(!(box.locked)) return body();
+  if(!(box.locked)) return plunder();
   box.unlock();
-  try { return body();}
+  try { return plunder();}
   finally {box.lock();}
 }
 
