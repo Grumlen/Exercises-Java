@@ -34,10 +34,8 @@
         for (var fact in mountain) {
           var tableCell = document.createElement("td");
           tableCell.textContent = mountain[fact];
-  //      Getting an unexpected identifier error, not sure why.
-  //      if (typeOf mountain[fact] === "number") {
-  //        tableCell.style.textAlign = "right";
-  //      }
+//          Getting an unexpected identifier error, not sure why.
+//          if (typeOf mountain[fact] === "number") tableCell.style.textAlign = "right";
           tableRow.appendChild(tableCell);
         }
         table.appendChild(tableRow);
@@ -49,6 +47,5 @@
     </script>
   </head>
   <body>
-
   </body>
 </html>
