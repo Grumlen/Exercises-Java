@@ -13,11 +13,13 @@
     <script>
       function asTabs(node) {
         var tabs = wrapper.childNodes;
+        console.log(tabs);
         var tabButtons = [];
-        tabs.forEach(function(tab) {
+        tabs.forEach(function(tab,i) {
+          tabButtons[i]=document.createElement("button");
+          document.body.appendChild(tabButtons[i]);
         });
       }
-      console.log(tabs);
       asTabs(document.querySelector("#wrapper"));
     </script>
   </body>
