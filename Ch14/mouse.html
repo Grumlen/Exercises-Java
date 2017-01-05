@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style>
+      .trail { /* className for the trail elements */
+        position: absolute;
+        height: 6px; width: 6px;
+        border-radius: 3px;
+        background: teal;
+      }
+      body {
+        height: 300px;
+        width: 500px;
+        border: 4px solid black;
+      }
+    </style>
+    <script>
+      // Your code here.
+      var trail = [];
+      var counter = 0;
+      for (var i=0;i<40;i++) {
+        trail[i] = document.createElement("div");
+        trail[i].className = "trail";
+      }
+      addEventListener("mousemove", function(event) {
+        trail[counter].style.left = (event.pageX - 4) + "px";
+        trail[counter].style.top = (event.pageY - 4) + "px";
+        document.body.appendChild(trail[counter]);
+        counter++;
+        if (counter > 39) counter = 0;
+      });
+    </script>
+  </head>
+  <body>
+
+  </body>
+</html>

@@ -9,6 +9,8 @@
       td, th { border: 1px solid black; padding: 3px 8px; }
       th     { text-align: left; }
     </style>
+  </head>
+  <body>
     <script>
     var MOUNTAINS = [
       {name: "Kilimanjaro", height: 5895, country: "Tanzania"},
@@ -34,8 +36,7 @@
         for (var fact in mountain) {
           var tableCell = document.createElement("td");
           tableCell.textContent = mountain[fact];
-//          Getting an unexpected identifier error, not sure why.
-//          if (typeOf mountain[fact] === "number") tableCell.style.textAlign = "right";
+          if (typeof mountain[fact] === "number") tableCell.style.textAlign = "right";
           tableRow.appendChild(tableCell);
         }
         table.appendChild(tableRow);
@@ -45,7 +46,5 @@
     console.log(MOUNTAINS);
     document.body.appendChild(buildTable(MOUNTAINS));
     </script>
-  </head>
-  <body>
   </body>
 </html>

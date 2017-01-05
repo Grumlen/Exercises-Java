@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <input type="text">
+    <script>
+      var field = document.querySelector("input");
+      // Your code here.
+      addEventListener("keypress", function(event) {
+        if (/[qwx]/i.test(String.fromCharCode(event.charCode))) {
+          event.preventDefault();
+        }
+      });
+    </script>
+  </body>
+</html>
