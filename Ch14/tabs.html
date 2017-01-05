@@ -12,11 +12,14 @@
     </div>
     <script>
       function asTabs(node) {
-        var tabs = wrapper.childNodes;
-        console.log(tabs);
+        var tabs = [];
+        for (i=0;i<wrapper.childNodes.length;i++) {
+          if (wrapper.childNodes[i].nodeType==1) tabs.push(wrapper.childNodes[i].innerText)
+        }
         var tabButtons = [];
         tabs.forEach(function(tab,i) {
           tabButtons[i]=document.createElement("button");
+          tabButtons[i].innerText=tabs[i];
           document.body.appendChild(tabButtons[i]);
         });
       }
