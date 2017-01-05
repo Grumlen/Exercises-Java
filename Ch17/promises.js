@@ -1,16 +1,18 @@
 function all(promises) {
-  return new Promise(function(success, fail) {
+  return new Promise(function(resolve, reject) {
     // Your code here.
-    var store = [];
-    promises.forEach(function(test,i) {
-      test.then(function(entry) {
-        store[i]=entry;
-      });
+    var storage = [], counter = promises.length;
+    promises.forEach(function(each,i) {
+      each.then(function(entry) {
+        counter--;
+        storage[i]=entry;
+        console.log(storage);
+        if (counter==0) resolve(storage);
+      }, function(error){ reject(error); });
     });
-    return store;
+    if (promises.length==0) resolve(storage);
   });
 }
-
 // Test code.
 all([]).then(function(array) {
   console.log("This should be []:", array);
@@ -21,7 +23,6 @@ function soon(val) {
                Math.random() * 500);
   });
 }
-console.log(soon(2))
 all([soon(1), soon(2), soon(3)]).then(function(array) {
   console.log("This should be [1, 2, 3]:", array);
 });
