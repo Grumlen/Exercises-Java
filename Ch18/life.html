@@ -9,6 +9,41 @@
     <button id="next">Next generation</button>
     <script>
       // Your code here.
+      var cells = new Array(10), grid = document.getElementById("grid"), button = document.getElementById("next");
+      for (var i=0;i<cells.length;i++) {
+        var line = document.createElement("div");
+        grid.appendChild(line);
+        cells[i] = new Array(10);
+        for (var j=0;j<cells[i].length;j++) {
+          cells[i][j] = document.createElement("input");
+          cells[i][j].type = "checkbox";
+          line.appendChild(cells[i][j]);
+          if(Math.random()>.5) cells[i][j].checked=true;
+        }
+      }
+      function sum(array,x,y) {
+        var counter = 0;
+        if (x>0) { if (array[x-1][y].checked) counter++; }
+        if (y<(array[0].length-1)) { if (array[x][y+1].checked) counter++; }
+        if (y>0) { if (array[x][y-1].checked) counter++; }
+        if (x<(array.length-1)) { if (array[x+1][y].checked) counter++; }
+        return counter;
+      }
+      next.addEventListener("click", function(event) {
+        var life = new Array(cells.length);
+        for (var i=0;i<cells.length;i++) {
+          life[i] = new Array(cells[i].length);
+          for (var j=0;j<cells[i].length;j++) {
+            life[i][j] = sum(cells,i,j);
+          }
+        }
+        for (var i=0;i<cells.length;i++) {
+          for (var j=0;j<cells[i].length;j++) {
+            if(cells[i][j].checked && (life[i][j]<2 || life[i][j]>3)) cells[i][j].checked = false;
+            if(!(cells[i][j].checked) && life[i][j]==3) cells[i][j].checked = true;
+          }
+        }
+      });
     </script>
   </body>
 </html>
