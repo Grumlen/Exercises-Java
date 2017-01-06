@@ -3,6 +3,11 @@
   <head>
     <meta charset="utf-8">
     <title></title>
+    <style>
+      * {
+        margin: 2px;
+      }
+    </style>
   </head>
   <body>
     <input type="text" id="field">
@@ -11,9 +16,27 @@
       // Builds up an array with global variable names, like
       // 'alert', 'document', and 'scrollTo'
       var terms = [];
-      for (var name in window)
-      terms.push(name);
+      for (var name in window) terms.push(name);
+      console.log(terms);
       // Your code here.
+      var input = document.getElementById("field");
+      var div = document.getElementById("suggestions");
+      input.addEventListener("input",function(event) {
+        div.textContent = "";
+        var reg = new RegExp("^"+input.value);
+        if (input.value != "") {
+          for (var i=0;i<terms.length;i++) {
+            if (reg.test(terms[i])) {
+              var temp = document.createElement("p");
+              temp.textContent=terms[i];
+              suggestions.appendChild(temp);
+            }
+          }
+        }
+      });
+      suggestions.addEventListener("click",function(event) {
+        input.value = event.target.textContent;
+      });
     </script>
   </body>
 </html>
