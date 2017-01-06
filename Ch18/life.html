@@ -9,11 +9,11 @@
     <button id="next">Next generation</button>
     <script>
       // Your code here.
-      var cells = new Array(10), grid = document.getElementById("grid"), button = document.getElementById("next");
+      var cells = new Array(30), grid = document.getElementById("grid"), button = document.getElementById("next");
       for (var i=0;i<cells.length;i++) {
         var line = document.createElement("div");
         grid.appendChild(line);
-        cells[i] = new Array(10);
+        cells[i] = new Array(30);
         for (var j=0;j<cells[i].length;j++) {
           cells[i][j] = document.createElement("input");
           cells[i][j].type = "checkbox";
