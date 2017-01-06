@@ -12,15 +12,19 @@
     </div>
     <script>
       function asTabs(node) {
-        var tabs = [];
+        var tabs = [], content = [];
         for (i=0;i<wrapper.childNodes.length;i++) {
-          if (wrapper.childNodes[i].nodeType==1) tabs.push(wrapper.childNodes[i].innerText)
+          if (wrapper.childNodes[i].nodeType==1) {
+            content.push(wrapper.childNodes[i]);
+            tabs.push(wrapper.childNodes[i].innerText);
+          }
         }
-        var tabButtons = [];
+        var tabButtons = [], buttonBlock = document.createElement("div");
+        document.body.appendChild(buttonBlock);
         tabs.forEach(function(tab,i) {
           tabButtons[i]=document.createElement("button");
           tabButtons[i].innerText=tabs[i];
-          document.body.appendChild(tabButtons[i]);
+          buttonBlock.appendChild(tabButtons[i]);
         });
       }
       asTabs(document.querySelector("#wrapper"));
