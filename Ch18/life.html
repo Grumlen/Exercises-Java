@@ -24,9 +24,13 @@
       function sum(array,x,y) {
         var counter = 0;
         if (x>0) { if (array[x-1][y].checked) counter++; }
+        if (x>0 && y<(array[0].length-1)) { if (array[x-1][y+1].checked) counter++; }
         if (y<(array[0].length-1)) { if (array[x][y+1].checked) counter++; }
-        if (y>0) { if (array[x][y-1].checked) counter++; }
+        if (x<(array.length-1) && y<(array[0].length-1)) { if (array[x+1][y+1].checked) counter++; }
         if (x<(array.length-1)) { if (array[x+1][y].checked) counter++; }
+        if (x<(array.length-1) && y>0) { if (array[x+1][y-1].checked) counter++; }
+        if (y>0) { if (array[x][y-1].checked) counter++; }
+        if (x>0 && y>0) { if (array[x-1][y-1].checked) counter++; }
         return counter;
       }
       next.addEventListener("click", function(event) {
