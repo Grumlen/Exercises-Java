@@ -1,17 +1,6 @@
-define([],function(){
+define(["lib/modules/notebuilder"],function(noteBuilder){
   var noteObject = {};
   var notes = document.getElementById("notes");
-  function get(id) {
-    var note = document.createElement("div");
-    var title = document.createElement("h2");
-    var contents = document.createElement("p");
-    note.className = id;
-    title.innerText = noteObject[id].title;
-    contents.innerText = noteObject[id].contents;
-    note.appendChild(title);
-    note.appendChild(contents);
-    notes.appendChild(note);
-  }
   return {
     store: function (time) {
       var title = document.getElementById("title");
@@ -22,14 +11,14 @@ define([],function(){
       }
       noteObject[time].title = title.value;
       noteObject[time].contents = contents.value;
-      noteObject[time].lastEdit = time;
+      noteObject[time].lastEdit = Date.now();
     },
     retrieve: function(id) {
-      get(id);
+      noteBuilder(id,noteObject[id]);
     },
     every: function() {
       for (var id in noteObject) {
-        get(id);
+        noteBuilder(id,noteObject[id]);
       }
     }
   }

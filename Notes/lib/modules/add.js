@@ -1,10 +1,11 @@
 define([],function(){
-  var region = document.getElementById("addNotes");
+  var addNotes = document.getElementById("addNotes");
   var title = document.getElementById("title");
   var contents = document.getElementById("contents");
-  return {
-    createNew: function(){
-      region.className = "show";
-    }
-  }
+  return function(noteTitle,noteContents,id) {
+      title.value = noteTitle;
+      contents.value =noteContents;
+      addNotes.className = "";
+      if (id) { title.className=id; }
+  };
 })

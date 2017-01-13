@@ -14,7 +14,7 @@
   position: fixed;
   left: 100px;
 }
-.hide {
+.hidden {
   display: none;
 }
 #title {
