@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <script src="lib/require.js" data-main="notes"></script>
+    <link rel="stylesheet" href="notes.css" type="text/css">
+  </head>
+  <body>
+    <div id="list">
+      <button type="button" class="all">All Notes</button>
+      <button type="button" class="create">New Note</button>
+    </div>
+    <div id="noteArea">
+      <div id="addNotes" class="hide">
+        <form id="addnote">
+          <input type="text" id="title" placeholder="Title"></input>
+          <textarea id="contents" placeholder="Contents"></textarea>
+          <button type="button" class="save">Save</button>
+          <button type="button" class="delete">Delete</button>
+        </form>
+      </div>
+      <div id="notes">
+      </div>
+    </div>
+  </body>
+</html>

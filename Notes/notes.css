@@ -1,0 +1,26 @@
+.note {
+  border: 2px solid black;
+}
+#list {
+  display: block;
+  position: fixed;
+  height: 100%;
+}
+#list button {
+  display: block;
+}
+#noteArea {
+  display: block;
+  position: fixed;
+  left: 100px;
+}
+.hide {
+  display: none;
+}
+#title {
+  display: block;
+}
+#contents {
+  display: block;
+  height: 200px;
+}
