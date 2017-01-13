@@ -20,10 +20,13 @@ define(["lib/modules/store"],function(storage){
       storage.store(time);
       if (buttonCheck(time)){
         var noteButton = document.createElement("button");
-        noteButton.innerText = title.value;
         noteButton.className = time;
         list.appendChild(noteButton);
       }
+      else {
+        var noteButton = document.getElementsByClassName(time)[0];
+      }
+      noteButton.innerText = title.value;
     },
     wipe: function() {
       title.value = "";

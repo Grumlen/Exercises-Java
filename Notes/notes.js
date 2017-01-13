@@ -27,10 +27,11 @@ require(["lib/modules/add","lib/modules/edit","lib/modules/del","lib/modules/sav
             if (e.target.className=="edit") {
               edit(e.target.parentNode.id);
             }
-            // else if (e.target.className=="delete") {
-            //   del(e.target.parentNode.id);
-            // }
+            else if (e.target.className=="delete") {
+              del(e.target.parentNode.id);
+            }
             else if (e.target.className=="hide") {
+              e.target.parentNode.parentNode.removeChild(e.target.parentNode);
             }
           });
 });

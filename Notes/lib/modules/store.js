@@ -1,10 +1,16 @@
 define(["lib/modules/notebuilder"],function(noteBuilder){
   var noteObject = {};
   var notes = document.getElementById("notes");
+  var title = document.getElementById("title");
+  var contents = document.getElementById("contents");
+  function noteChecker(id) {
+    for(var i=0;i<notes.childNodes.length;i++) {
+      if (notes.childNodes[i].id==id) return false;
+    }
+    return true;
+  }
   return {
     store: function (time) {
-      var title = document.getElementById("title");
-      var contents = document.getElementById("contents");
       if (!noteObject[time]) {
         noteObject[time] = {};
         noteObject[time].created = time;
@@ -14,12 +20,15 @@ define(["lib/modules/notebuilder"],function(noteBuilder){
       noteObject[time].lastEdit = Date.now();
     },
     retrieve: function(id) {
-      noteBuilder(id,noteObject[id]);
+      if (noteChecker(id)) noteBuilder(id,noteObject[id]);
     },
     every: function() {
       for (var id in noteObject) {
-        noteBuilder(id,noteObject[id]);
+        if (noteChecker(id)) noteBuilder(id,noteObject[id]);
       }
+    },
+    remove: function(id) {
+      delete noteObject[id];
     }
   }
 });
