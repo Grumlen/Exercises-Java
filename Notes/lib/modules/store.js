@@ -1,8 +1,8 @@
 define(["lib/modules/notebuilder"],function(noteBuilder){
-  var noteObject = {};
   var notes = document.getElementById("notes");
   var title = document.getElementById("title");
   var contents = document.getElementById("contents");
+  var noteObject = {};
   function noteChecker(id) {
     for(var i=0;i<notes.childNodes.length;i++) {
       if (notes.childNodes[i].id==id) return false;
@@ -10,25 +10,23 @@ define(["lib/modules/notebuilder"],function(noteBuilder){
     return true;
   }
   return {
-    store: function (time) {
-      if (!noteObject[time]) {
-        noteObject[time] = {};
-        noteObject[time].created = time;
-      }
-      noteObject[time].title = title.value;
-      noteObject[time].contents = contents.value;
-      noteObject[time].lastEdit = Date.now();
+    store: function (id) {
+      noteObject.created = id;
+      noteObject.title = title.value;
+      noteObject.contents = contents.value;
+      noteObject.lastEdit = Date.now();
+      localStorage.setItem(id, JSON.stringify(noteObject));
     },
     retrieve: function(id) {
-      if (noteChecker(id)) noteBuilder(id,noteObject[id]);
+      if (noteChecker(id)) noteBuilder(id,JSON.parse(localStorage.getItem(id)));
     },
     every: function() {
-      for (var id in noteObject) {
-        if (noteChecker(id)) noteBuilder(id,noteObject[id]);
+      for (var id in localStorage) {
+        if (noteChecker(id)) noteBuilder(id,JSON.parse(localStorage.getItem(id)));
       }
     },
     remove: function(id) {
-      delete noteObject[id];
+      localStorage.removeItem(id);
     }
   }
 });

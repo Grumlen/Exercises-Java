@@ -3,6 +3,13 @@ require(["lib/modules/add","lib/modules/edit","lib/modules/del","lib/modules/sav
           var list = document.getElementById("list");
           var addNotes = document.getElementById("addNotes");
           var notes = document.getElementById("notes");
+          for (var id in localStorage) {
+            var noteButton = document.createElement("button");
+            var noteObject = JSON.parse(localStorage.getItem(id));
+            noteButton.className = id;
+            noteButton.innerText = noteObject.title;
+            list.appendChild(noteButton);
+          }
           list.addEventListener("click", function(e) {
             if (e.target.className=="create") { // Reveal and clear note creation area
               add("","");
