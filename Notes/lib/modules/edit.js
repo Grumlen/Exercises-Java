@@ -1,4 +1,4 @@
-define(["lib/modules/add"],function(add){
+define(["modules/add"],function(add){
   var title = document.getElementById("title");
   var contents = document.getElementById("contents");
   return function(id) {

@@ -1,4 +1,4 @@
-define(["lib/modules/store"],function(storage){
+define(["modules/store"],function(storage){
   var addNotes = document.getElementById("addNotes");
   var title = document.getElementById("title");
   var contents = document.getElementById("contents");
@@ -15,7 +15,7 @@ define(["lib/modules/store"],function(storage){
       if (title.className!="") {
         time = title.className;
       }
-      else time = Date.now();
+      else time = Date();
       title.className = "";
       storage.store(time);
       if (buttonCheck(time)){

@@ -1,4 +1,4 @@
-define(["lib/modules/store"],function(storage){
+define(["modules/store"],function(storage){
   var list = document.getElementById("list");
   return function(id) {
     var note = document.getElementById(id);

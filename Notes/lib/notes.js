@@ -1,4 +1,4 @@
-require(["lib/modules/add","lib/modules/edit","lib/modules/del","lib/modules/save","lib/modules/store"],
+require(["modules/add","modules/edit","modules/del","modules/save","modules/store"],
         function(add,edit,del,save,storage) {
           var list = document.getElementById("list");
           var addNotes = document.getElementById("addNotes");

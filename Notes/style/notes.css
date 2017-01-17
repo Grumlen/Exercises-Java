@@ -1,5 +1,6 @@
 .note {
   border: 2px solid black;
+  padding: 4px;
 }
 #list {
   display: block;
@@ -23,4 +24,7 @@
 #contents {
   display: block;
   height: 200px;
+}
+.date {
+  font-size: .5em;
 }

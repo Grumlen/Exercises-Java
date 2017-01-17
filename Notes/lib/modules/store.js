@@ -1,4 +1,4 @@
-define(["lib/modules/notebuilder"],function(noteBuilder){
+define(["modules/notebuilder"],function(noteBuilder){
   var notes = document.getElementById("notes");
   var title = document.getElementById("title");
   var contents = document.getElementById("contents");
@@ -14,7 +14,7 @@ define(["lib/modules/notebuilder"],function(noteBuilder){
       noteObject.created = id;
       noteObject.title = title.value;
       noteObject.contents = contents.value;
-      noteObject.lastEdit = Date.now();
+      noteObject.lastEdit = Date();
       localStorage.setItem(id, JSON.stringify(noteObject));
     },
     retrieve: function(id) {
