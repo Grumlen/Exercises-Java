@@ -3,12 +3,17 @@
   <head>
     <meta charset="utf-8">
     <title></title>
+    <style>
+    .hide {
+      display: none;
+    }
+    </style>
   </head>
   <body>
     <div id="wrapper">
       <div data-tabname="one">Tab one</div>
-      <div data-tabname="two">Tab two</div>
-      <div data-tabname="three">Tab three</div>
+      <div data-tabname="two" class="hide">Tab two</div>
+      <div data-tabname="three" class="hide">Tab three</div>
     </div>
     <script>
       function asTabs(node) {
@@ -16,7 +21,7 @@
         for (i=0;i<wrapper.childNodes.length;i++) {
           if (wrapper.childNodes[i].nodeType==1) {
             content.push(wrapper.childNodes[i]);
-            tabs.push(wrapper.childNodes[i].innerText);
+            tabs.push(wrapper.childNodes[i].textContent);
           }
         }
         var tabButtons = [], buttonBlock = document.createElement("div");
@@ -25,6 +30,12 @@
           tabButtons[i]=document.createElement("button");
           tabButtons[i].innerText=tabs[i];
           buttonBlock.appendChild(tabButtons[i]);
+        });
+        buttonBlock.addEventListener("click",function(e) {
+          buttonBlock.childNodes.forEach(function(tab,i) {
+            if (e.target==tab) wrapper.childNodes[i*2+1].className = "";
+            else wrapper.childNodes[i*2+1].className = "hide";
+          });
         });
       }
       asTabs(document.querySelector("#wrapper"));
